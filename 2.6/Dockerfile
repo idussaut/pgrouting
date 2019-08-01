@@ -1,4 +1,4 @@
-FROM crtn/postgis:11.4-2.5.2
+FROM crtn/postgis:2.5.2
 
 LABEL maintainer="Ignacio Fernandez Dussaut <Ignacio.Dussaut@Cartesian.com>" \
   version="0.02" \
