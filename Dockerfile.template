@@ -1,0 +1,16 @@
+FROM crtn/postgis:%%TAG%%
+
+LABEL maintainer="Ignacio Fernandez Dussaut <Ignacio.Dussaut@Cartesian.com>" \
+  description="Based images for PostgreSQL Database with PostGIS and pgRouting extensions"
+
+ENV PGROUTING_VERSION %%VERSION%%
+ENV PGROUTING_SHA256 %%SRC-SHA256%%
+
+ADD https://github.com/pgRouting/pgrouting/releases/download/v${PGROUTING_VERSION}/pgrouting-${PGROUTING_VERSION}.tar.gz /usr/src/pgrouting
+ADD resources/build.sh /usr/src/pgrouting
+
+RUN chmod 777 /usr/src/pgrouting/build.sh; \
+  /usr/src/pgrouting/build.sh; \
+  mkdir -p /docker-entrypoint-initdb.d
+
+COPY ./initdb-pgrouting.sh /docker-entrypoint-initdb.d/pgrouting.sh
