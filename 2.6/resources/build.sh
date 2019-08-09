@@ -33,3 +33,8 @@ rm -fr /usr/src/pgrouting/*
 
 
 mkdir -p /docker-entrypoint-initdb.d
+
+# Creating directory to modify PostgreSQL configuration
+mkdir -p /usr/src/postgresql/conf.d
+chown -R postgres:postgres /usr/src/postgresql/conf.d 
+chmod 777 /usr/src/postgresql/conf.d

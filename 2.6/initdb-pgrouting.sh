@@ -9,3 +9,5 @@ echo "Loading PostGIS extensions into $PGDATABASE"
 psql --dbname="$PGDATABASE" <<-'EOSQL'
   CREATE EXTENSION IF NOT EXISTS pgrouting CASCADE;
 EOSQL
+
+sed -ri "s!^#?(include_dir)\s*=.*!\1 = '/usr/src/postgresql/conf.d'!" /var/lib/postgresql/data/postgresql.conf

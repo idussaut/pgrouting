@@ -11,4 +11,4 @@ ADD resources/build.sh /usr/src/pgrouting/
 
 RUN chmod 777 /usr/src/pgrouting/build.sh && /usr/src/pgrouting/build.sh 
 
-COPY ./initdb-pgrouting.sh /docker-entrypoint-initdb.d/pgrouting.sh
+COPY ./initdb-pgrouting.sh /docker-entrypoint-initdb.d/02_pgrouting.sh
